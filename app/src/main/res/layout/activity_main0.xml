@@ -59,6 +59,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="40dp"
+        android:contentDescription="std_button"
         app:layout_constraintEnd_toEndOf="@+id/slider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slider"
@@ -93,6 +94,5 @@
         app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintTop_toTopOf="@+id/right"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_chevron_left" />
-
+        app:srcCompat="@drawable/ic_chevron_left_48px"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
