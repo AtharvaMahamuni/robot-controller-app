@@ -35,7 +35,7 @@ public class MainActivity0 extends AppCompatActivity {
     BluetoothSocket socket = null;
     OutputStream outputStream = null;
     static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    static String address = "20:A6:0C:87:88:15";
+    static String address = "00:19:10:08:2D:63";
 
     @SuppressLint({"ResourceAsColor", "ClickableViewAccessibility"})
     @Override
