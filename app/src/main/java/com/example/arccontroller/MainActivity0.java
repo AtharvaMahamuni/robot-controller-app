@@ -65,6 +65,7 @@ public class MainActivity0 extends AppCompatActivity {
                     }
                     case MotionEvent.ACTION_UP: {
                         up.setImageResource(R.drawable.ic_arrow_drop_up);
+                        offForward("5");
                         return true;
                     }
                 }
@@ -84,6 +85,7 @@ public class MainActivity0 extends AppCompatActivity {
                     }
                     case MotionEvent.ACTION_UP: {
                         down.setImageResource(R.drawable.ic_arrow_drop_down);
+                        offBackword("6");
                         return true;
                     }
                 }
@@ -103,6 +105,7 @@ public class MainActivity0 extends AppCompatActivity {
                     }
                     case MotionEvent.ACTION_UP: {
                         left.setImageResource(R.drawable.ic_chevron_left_48px);
+                        offLeft("7");
                         return true;
                     }
                 }
@@ -122,6 +125,7 @@ public class MainActivity0 extends AppCompatActivity {
                     }
                     case MotionEvent.ACTION_UP: {
                         right.setImageResource(R.drawable.ic_chevron_right);
+                        offRight("8");
                         return true;
                     }
                 }
@@ -295,6 +299,90 @@ public class MainActivity0 extends AppCompatActivity {
     }
 
     private void goRight(String message) {
+        if (message != null) {
+            byte[] msgBuffer = message.getBytes();
+
+            Log.d(TAG, "...Send data goRight: " + message + "...");
+
+            try {
+                outputStream.write(msgBuffer);
+            } catch (IOException e) {
+                String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+                if (address.equals("00:00:00:00:00:00"))
+                    msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+                msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+
+                //errorExit("Fatal Error", msg);
+            }
+        } else {
+            Log.d(TAG, "sent data is null !");
+        }
+    }
+
+    private void offForward(String message) {
+        if (message != null) {
+            byte[] msgBuffer = message.getBytes();
+
+            Log.d(TAG, "...Send data goRight: " + message + "...");
+
+            try {
+                outputStream.write(msgBuffer);
+            } catch (IOException e) {
+                String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+                if (address.equals("00:00:00:00:00:00"))
+                    msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+                msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+
+                //errorExit("Fatal Error", msg);
+            }
+        } else {
+            Log.d(TAG, "sent data is null !");
+        }
+    }
+
+    private void offBackword(String message) {
+        if (message != null) {
+            byte[] msgBuffer = message.getBytes();
+
+            Log.d(TAG, "...Send data goRight: " + message + "...");
+
+            try {
+                outputStream.write(msgBuffer);
+            } catch (IOException e) {
+                String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+                if (address.equals("00:00:00:00:00:00"))
+                    msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+                msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+
+                //errorExit("Fatal Error", msg);
+            }
+        } else {
+            Log.d(TAG, "sent data is null !");
+        }
+    }
+
+    private void offLeft(String message) {
+        if (message != null) {
+            byte[] msgBuffer = message.getBytes();
+
+            Log.d(TAG, "...Send data goRight: " + message + "...");
+
+            try {
+                outputStream.write(msgBuffer);
+            } catch (IOException e) {
+                String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+                if (address.equals("00:00:00:00:00:00"))
+                    msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+                msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+
+                //errorExit("Fatal Error", msg);
+            }
+        } else {
+            Log.d(TAG, "sent data is null !");
+        }
+    }
+
+    private void offRight(String message) {
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
