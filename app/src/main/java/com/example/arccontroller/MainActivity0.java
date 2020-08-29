@@ -1,5 +1,6 @@
 package com.example.arccontroller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.material.slider.Slider;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -31,6 +35,7 @@ public class MainActivity0 extends AppCompatActivity{
     private static final String TAG = "ARC Controller";
     ImageView right, left, up, down;
     Window window;
+    Slider slider;
     BluetoothAdapter adapter = null;
     BluetoothSocket socket = null;
     OutputStream outputStream = null;
@@ -52,6 +57,15 @@ public class MainActivity0 extends AppCompatActivity{
         left = findViewById(R.id.left);
         up = findViewById(R.id.up);
         down = findViewById(R.id.down);
+
+        slider=(Slider)findViewById(R.id.slider);
+        slider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                String val=Float.toString(value);
+                setPWM(val);
+            }
+        });
 
         up.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -291,7 +305,7 @@ public class MainActivity0 extends AppCompatActivity{
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
-            Log.d(TAG, "...Send data goRight: " + message + "...");
+            Log.d(TAG, "...Send data goRight: " + msgBuffer + "...");
 
             try {
                 outputStream.write(msgBuffer);
@@ -377,6 +391,27 @@ public class MainActivity0 extends AppCompatActivity{
 
             Log.d(TAG, "...Send data offRight: " + message + "...");
 
+            try {
+                outputStream.write(msgBuffer);
+            } catch (IOException e) {
+                String msg = "In onResume() and an exception occurred during write: " + e.getMessage();
+                if (address.equals("00:00:00:00:00:00"))
+                    msg = msg + ".\n\nUpdate your server address from 00:00:00:00:00:00 to the correct address on line 35 in the java code";
+                msg = msg + ".\n\nCheck that the SPP UUID: " + MY_UUID.toString() + " exists on server.\n\n";
+
+                //errorExit("Fatal Error", msg);
+            }
+        } else {
+            Log.d(TAG, "sent data is null !");
+        }
+    }
+
+    private void setPWM(String message) {
+        if (message != null) {
+            byte[] msgBuffer = message.getBytes();
+
+            Log.d(TAG, "...Send data PWM: " + message + "...");
+            System.out.println("PWM Value : "+message);
             try {
                 outputStream.write(msgBuffer);
             } catch (IOException e) {

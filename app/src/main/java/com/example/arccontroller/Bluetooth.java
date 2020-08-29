@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class Bluetooth extends AppCompatActivity {
     TextView textView;
     Button connect;
     String SelectedID;
+    String check="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class Bluetooth extends AppCompatActivity {
                 SelectedID=str.substring(sepPos+sep.length());
                 textView.setText((String) listView.getItemAtPosition(i));
                 System.out.println(SelectedID);
+                check="Go";
             }
         });
         connect=(Button)findViewById(R.id.button);
@@ -62,8 +65,12 @@ public class Bluetooth extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity0.address=SelectedID;
-                Intent i=new Intent(Bluetooth.this,MainActivity0.class);
-                startActivity(i);
+                if(check=="Go") {
+                    Intent i = new Intent(Bluetooth.this, MainActivity0.class);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Select Device from above List",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
