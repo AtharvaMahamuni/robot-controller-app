@@ -26,7 +26,7 @@ import java.util.UUID;
 
 import static com.example.arccontroller.R.color.colorAccent;
 
-public class MainActivity0 extends AppCompatActivity {
+public class MainActivity0 extends AppCompatActivity{
 
     private static final String TAG = "ARC Controller";
     ImageView right, left, up, down;
@@ -35,8 +35,7 @@ public class MainActivity0 extends AppCompatActivity {
     BluetoothSocket socket = null;
     OutputStream outputStream = null;
     static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    static String address = "00:19:10:08:2D:63";
-
+    public static String address;
     @SuppressLint({"ResourceAsColor", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,13 +151,8 @@ public class MainActivity0 extends AppCompatActivity {
 
         Log.d(TAG, "...onResume - try connect...");
 
-        // Set up a pointer to the remote node using it's address.
         BluetoothDevice device = adapter.getRemoteDevice(address);
 
-        // Two things are needed to make a connection:
-        //   A MAC address, which we got above.
-        //   A Service ID or UUID.  In this case we are using the
-        //     UUID for SPP.
 
         try {
             socket = createBluetoothSocket(device);
@@ -166,11 +160,8 @@ public class MainActivity0 extends AppCompatActivity {
             errorExit("Fatal Error", "In onResume() and socket create failed: " + e1.getMessage() + ".");
         }
 
-        // Discovery is resource intensive.  Make sure it isn't going on
-        // when you attempt to connect and pass your message.
         adapter.cancelDiscovery();
 
-        // Establish the connection.  This will block until it connects.
         Log.d(TAG, "...Connecting...");
         try {
             socket.connect();
@@ -183,7 +174,6 @@ public class MainActivity0 extends AppCompatActivity {
             }
         }
 
-        // Create a data stream so we can talk to server.
         Log.d(TAG, "...Create Socket...");
 
         try {
@@ -215,8 +205,7 @@ public class MainActivity0 extends AppCompatActivity {
     }
 
     private void checkBTState() {
-        // Check for Bluetooth support and then check to make sure it is turned on
-        // Emulator doesn't support Bluetooth and will return null
+
         if (adapter == null) {
             errorExit("Fatal Error", "Bluetooth not support");
         } else {
@@ -323,7 +312,7 @@ public class MainActivity0 extends AppCompatActivity {
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
-            Log.d(TAG, "...Send data goRight: " + message + "...");
+            Log.d(TAG, "...Send data offForward: " + message + "...");
 
             try {
                 outputStream.write(msgBuffer);
@@ -344,7 +333,7 @@ public class MainActivity0 extends AppCompatActivity {
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
-            Log.d(TAG, "...Send data goRight: " + message + "...");
+            Log.d(TAG, "...Send data offBackword: " + message + "...");
 
             try {
                 outputStream.write(msgBuffer);
@@ -365,7 +354,7 @@ public class MainActivity0 extends AppCompatActivity {
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
-            Log.d(TAG, "...Send data goRight: " + message + "...");
+            Log.d(TAG, "...Send data offLeft: " + message + "...");
 
             try {
                 outputStream.write(msgBuffer);
@@ -386,7 +375,7 @@ public class MainActivity0 extends AppCompatActivity {
         if (message != null) {
             byte[] msgBuffer = message.getBytes();
 
-            Log.d(TAG, "...Send data goRight: " + message + "...");
+            Log.d(TAG, "...Send data offRight: " + message + "...");
 
             try {
                 outputStream.write(msgBuffer);
