@@ -65,12 +65,12 @@ public class Bluetooth extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MainActivity0.address=SelectedID;
-                if(check=="Go") {
+//                if(check=="Go") {
                     Intent i = new Intent(Bluetooth.this, MainActivity0.class);
                     startActivity(i);
-                }else{
+//                }else{
                     Toast.makeText(getApplicationContext(),"Select Device from above List",Toast.LENGTH_LONG).show();
-                }
+//                }
             }
         });
     }
