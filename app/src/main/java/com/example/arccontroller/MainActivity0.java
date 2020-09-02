@@ -132,7 +132,7 @@ public class MainActivity0 extends AppCompatActivity{
                         return true;
                     }
                     case MotionEvent.ACTION_UP: {
-                        left.setImageResource(R.drawable.ic_baseline_chevron_left_24);
+                        left.setImageResource(R.drawable.ic_chevron_left);
                         offLeft("7");
                         return true;
                     }
