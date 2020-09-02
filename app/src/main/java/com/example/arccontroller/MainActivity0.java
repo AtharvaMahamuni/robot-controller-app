@@ -63,7 +63,22 @@ public class MainActivity0 extends AppCompatActivity{
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
                 String val=Float.toString(value);
-                setPWM(val);
+                System.out.println(val);
+                String send = null;
+                if(val.equals("50.0")){
+                    send="A";
+                }else if(val.equals("100.0")){
+                    send="B";
+                }else if(val.equals("150.0")){
+                    send="C";
+                }else if(val.equals("200.0")){
+                    send="D";
+                }else if(val.equals("250.0")){
+                    send="E";
+                }else if(val.equals("0.0")){
+                    send="F";
+                }
+                setPWM(send);
             }
         });
 
@@ -117,7 +132,7 @@ public class MainActivity0 extends AppCompatActivity{
                         return true;
                     }
                     case MotionEvent.ACTION_UP: {
-                        left.setImageResource(R.drawable.ic_chevron_left);
+                        left.setImageResource(R.drawable.ic_baseline_chevron_left_24);
                         offLeft("7");
                         return true;
                     }
