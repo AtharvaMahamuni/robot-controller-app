@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "804794506601",
+    "firebase_url": "https://arc-controller.firebaseio.com",
+    "project_id": "arc-controller",
+    "storage_bucket": "arc-controller.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804794506601:android:a1abdfd04722ae324e71f8",
+        "android_client_info": {
+          "package_name": "com.example.arccontroller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804794506601-0ueljtn1qeh9jocr4frb0o9mifnrb9i3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVQrgyDowJP97YP59eJU-wcg0rJcUFBVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804794506601-0ueljtn1qeh9jocr4frb0o9mifnrb9i3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
